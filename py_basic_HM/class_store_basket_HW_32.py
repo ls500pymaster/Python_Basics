@@ -33,18 +33,27 @@ class Purchase:
 	def __str__(self):
 		return f"Customer: \n {self.user} \n Count: {self.products} \n {self.total}"
 
-	def get_total(self):
-		return self.products.keys(), self.products.values()
+	def get_total_cart(self):
+		for key, value in self.products.items():
+			return f"{key}\nCount: {value}"
+
+	def get_total_bill(self):
+		self.total_bill = 0
+		self.total_item = 0
+		for k, v in self.products.items():
+			self.total_item += v
+			self.total_bill
+		return self.total_item
 
 
 lemon = Item('lemon', 5, "yellow", "small", )
-apple = Item('apple', 2, "red", "middle", )
-# print(lemon)  # lemon, price: 5
-
+apple = Item('apple', 2, "red", "medium", )
+rukola = Item('rukola', 20, "green", "large")
 buyer = User("Ivan", "Ivanov", "02628162")
-
 cart = Purchase(buyer)
-cart.add_item(lemon, 2)
-cart.add_item(apple, 3)
+cart.add_item(apple, 2)
+cart.add_item(lemon, 1)
+cart.add_item(rukola, 1)
 
-print(cart.get_total())
+print(cart.get_total_cart())
+print(cart.get_total_bill())
