@@ -7,7 +7,7 @@ class Item:
 		self.name = name
 
 	def __str__(self):
-		return f"Item = {self.name}, Price = {self.price}, Spec = {self.decription}, Size = {self.dimensions}"
+		return f"Items: {self.name}, Price = {self.price}, Spec = {self.decription}, Size = {self.dimensions} "
 
 
 class User:
@@ -18,7 +18,7 @@ class User:
 		self.numberphone = numberphone
 
 	def __str__(self):
-		return f"Name: {self.name} \n Surname: {self.surname} \n Phone: {self.numberphone}\n"
+		return f"Name: {self.name}\nSurname: {self.surname}\nPhone: {self.numberphone}\n"
 
 
 class Purchase:
@@ -35,15 +35,15 @@ class Purchase:
 
 	def get_total_cart(self):
 		for key, value in self.products.items():
-			return f"{key}\nCount: {value}"
+			print(key, value)
 
 	def get_total_bill(self):
 		self.total_bill = 0
 		self.total_item = 0
 		for k, v in self.products.items():
 			self.total_item += v
-			self.total_bill
-		return self.total_item
+			self.total_bill += k.price
+		return f"\nTotal items: {self.total_item}\nTotal bill: {self.total_bill}"
 
 
 lemon = Item('lemon', 5, "yellow", "small", )
@@ -54,6 +54,7 @@ cart = Purchase(buyer)
 cart.add_item(apple, 2)
 cart.add_item(lemon, 1)
 cart.add_item(rukola, 1)
-
-print(cart.get_total_cart())
+print(buyer)
+full_cart = cart.get_total_cart()
+full_cart
 print(cart.get_total_bill())
