@@ -36,6 +36,8 @@ class Purchase:
 	def get_total(self):
 		self.total_item = 0
 		for k, v in self.products.items():
+			my_cart = f"{k.name} --> {v}"
+			print(my_cart)
 			self.total_item += v
 		new = []
 		new2 = []
@@ -48,12 +50,12 @@ class Purchase:
 		tb = [a * b for a, b in zip(new, new2)]
 		for item in tb:
 			self.count += item
-		return f"Total items: {self.total_item}\nTotal price of order: {self.count}"  # Total bill: {self.total_bill}"
+		return f"Total items: {self.total_item}\nTotal price of order: {self.count}\n"  # Total bill: {self.total_bill}"
 
 
-lemon = Item('lemon', 5, "yellow", "small", )
-apple = Item('apple', 5, "red", "medium", )
-rukola = Item('rukola', 20, "green", "large")
+lemon = Item('Lemon', 5, "yellow", "small", )
+apple = Item('Apple', 5, "red", "medium", )
+rukola = Item('Rukola', 20, "green", "large")
 buyer = User("Ivan", "Ivanov", "02628162")
 cart = Purchase(buyer)
 cart.add_item(lemon, 3)
