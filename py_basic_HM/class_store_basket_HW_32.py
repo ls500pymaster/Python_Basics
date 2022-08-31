@@ -33,28 +33,32 @@ class Purchase:
 	def __str__(self):
 		return f"Customer: \n {self.user} \n Count: {self.products} \n {self.total}"
 
-	def get_total_cart(self):
-		for key, value in self.products.items():
-			print(key, value)
-
-	def get_total_bill(self):
-		self.total_bill = 0
+	def get_total(self):
 		self.total_item = 0
 		for k, v in self.products.items():
 			self.total_item += v
-			self.total_bill += k.price
-		return f"\nTotal items: {self.total_item}\nTotal bill: {self.total_bill}"
+		new = []
+		new2 = []
+		self.count = 0
+		keys = self.products.keys()
+		for value in self.products.values():
+			new.append(value)
+		for key in self.products.keys():
+			new2.append(key.price)
+		tb = [a * b for a, b in zip(new, new2)]
+		for item in tb:
+			self.count += item
+		return f"Total items: {self.total_item}\nTotal price of order: {self.count}"  # Total bill: {self.total_bill}"
 
 
 lemon = Item('lemon', 5, "yellow", "small", )
-apple = Item('apple', 2, "red", "medium", )
+apple = Item('apple', 5, "red", "medium", )
 rukola = Item('rukola', 20, "green", "large")
 buyer = User("Ivan", "Ivanov", "02628162")
 cart = Purchase(buyer)
+cart.add_item(lemon, 3)
 cart.add_item(apple, 2)
-cart.add_item(lemon, 1)
 cart.add_item(rukola, 1)
 print(buyer)
-full_cart = cart.get_total_cart()
-full_cart
-print(cart.get_total_bill())
+full_cart = cart.get_total()
+print(full_cart)
