@@ -50,7 +50,7 @@ class Purchase:
 		tb = [a * b for a, b in zip(new, new2)]
 		for item in tb:
 			self.count += item
-		return f"Total items: {self.total_item}\nTotal price of order: {self.count}\n"  # Total bill: {self.total_bill}"
+		return f"Total items: {self.total_item}\nTotal price of order: {self.count}\n"
 
 
 lemon = Item('Lemon', 5, "yellow", "small", )
