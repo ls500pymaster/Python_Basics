@@ -11,39 +11,40 @@ class Human:
 
 
 class Student(Human):
-	def __init__(self, gender, age, first_name, last_name, record_book=1):
-		super().__init__(gender, age, first_name, last_name)
+
+	def __init__(self, gender, age, first_name, last_name, record_book):
 		self.gender = gender
 		self.age = age
 		self.first_name = first_name
 		self.last_name = last_name
 		self.record_book = record_book
 
+	def find_last_name(self):
+		for i in Student.lasy_name:  # ???
+			if i==self.last_name:
+				print(i)
+			else:
+				print("not found")
+		print(self.find_last_name)
+
 	def __str__(self):
 		return f"\nName: {self.first_name}\nGender: {self.gender}\nAge: {self.age}"
 
 
 class Group(Student):
-	def __init__(self, number, student, gender, age, first_name, last_name, record_book=1):
-		super().__init__(gender, age, first_name, last_name, record_book)
+	def __init__(self, number):
 		self.number = number
-		self.student = student
 		self.group = set()
 
-	def add_student(self, student: object) -> object:
+	def add_student(self, student):
 		self.group.add(student)
 
 	def delete_student(self, last_name):
 		res = self.find_student(last_name)
-		del res
+		pass
 
 	def find_student(self, last_name):
-		param = input("Input last name: ")
-		for last_name in self.student.last_name:
-			print(last_name)
-			found = True
-			if not found:
-				print("Error")
+		return Student.find_last_name(self)
 
 	def __str__(self):
 		all_students = ''
@@ -52,7 +53,7 @@ class Group(Student):
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
-gr = Group('Group Number 1', "lol", "lolik", "bolik", "python")
+gr = Group('Group Number 1')
 gr.add_student(st1)
 
 gr.find_student('Jobs2')  # None
