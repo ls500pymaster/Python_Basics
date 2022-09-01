@@ -20,7 +20,7 @@ class Student(Human):
 		self.record_book = record_book
 
 	def find_last_name(self):
-		for i in Student.lasy_name:  # ???
+		for i in Student.last_name:  # ???
 			if i==self.last_name:
 				print(i)
 			else:
