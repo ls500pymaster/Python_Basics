@@ -19,14 +19,6 @@ class Student(Human):
 		self.last_name = last_name
 		self.record_book = record_book
 
-	def find_last_name(self):
-		for i in Student.last_name:  # ???
-			if i==self.last_name:
-				print(i)
-			else:
-				print("not found")
-		print(self.find_last_name)
-
 	def __str__(self):
 		return f"\nName: {self.first_name}\nGender: {self.gender}\nAge: {self.age}"
 
@@ -44,7 +36,12 @@ class Group(Student):
 		pass
 
 	def find_student(self, last_name):
-		return Student.find_last_name(self)
+		param = input("last name: ")
+		for param in self.group:
+			if param==last_name:
+				print(param)
+			else:
+				print("not found")
 
 	def __str__(self):
 		all_students = ''
