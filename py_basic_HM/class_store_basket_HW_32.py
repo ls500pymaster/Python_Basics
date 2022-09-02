@@ -44,12 +44,13 @@ class Purchase:
 		return self.count
 
 	def cart_info(self):
+		tmp = ""
 		for k, v in self.products.items():
-			self.my_cart = f"{k.name} --> {v}"
-			print(self.my_cart)
+			tmp += f"{k.name} --> {v} pcs.\n"
+		return tmp
 
 	def __str__(self):
-		return f"Customer: \n {self.user} {self.cart_info()}"
+		return f"Customer\n{self.user}\nItems: \n{self.cart_info()}"
 
 lemon = Item('Lemon', 5, "yellow", "small", )
 apple = Item('Apple', 5, "red", "medium", )
