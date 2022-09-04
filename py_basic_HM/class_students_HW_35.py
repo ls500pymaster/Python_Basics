@@ -1,17 +1,10 @@
 class MyCustomError(Exception):
-	def __init__(self, *args):
-		if args:
-			self.message = args[0]
-		else:
-			self.message = None
+	def __init__(self, message):
+		super().__init__()
+		self.message = message
 
-	def __str__(self):
-		print("calling str")
-		if self.message:
-			return f"MyError {0}"
-		else:
-			return "raised"
-
+	def get_exception_message(self):
+		return self.message
 
 class Human:
 
@@ -46,7 +39,10 @@ class Group:
 	def add_student(self, student):
 		if len(self.group) >= 4:
 			raise MyCustomError("More than 4")
-		self.group.add(student)
+		try:
+			self.group.add(student)
+		except MyCustomError as err:
+			return (err.get_exception_message())
 
 	def delete_student(self, last_name):
 		res = self.find_student(last_name)
@@ -69,15 +65,15 @@ class Group:
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
 st2 = Student('Male', 29, 'Ilon', 'Mask', 'AN143')
-# st3 = Student('Male', 30, 'Baiden', 'Jobs', 'AN142')
-# st4 = Student('Male', 29, 'Trump', 'Mask', 'AN143')
-# st5 = Student('Male', 30, 'Obama', 'Jobs', 'AN142')
+st3 = Student('Male', 30, 'Baiden', 'Jobs', 'AN142')
+st4 = Student('Male', 29, 'Trump', 'Mask', 'AN143')
+st5 = Student('Male', 30, 'Obama', 'Jobs', 'AN142')
 gr = Group('Group Number 1')
 gr.add_student(st1)
 gr.add_student(st2)
-# gr.add_student(st3)
-# gr.add_student(st4)
-# gr.add_student(st5)
+gr.add_student(st3)
+gr.add_student(st4)
+gr.add_student(st5)
 print(gr.find_student("Jobs"))
 print(gr.find_student("Test"))  # None
 print(gr)  # Student
