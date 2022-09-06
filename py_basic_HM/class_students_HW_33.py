@@ -1,18 +1,3 @@
-class MyCustomError(Exception):
-	def __init__(self, *args):
-		if args:
-			self.message = args[0]
-		else:
-			self.message = None
-
-	def __str__(self):
-		print("calling str")
-		if self.message:
-			return f"MyError {0}"
-		else:
-			return "raised"
-
-
 class Human:
 
 	def __init__(self, gender, age, first_name, last_name):
@@ -28,6 +13,7 @@ class Human:
 class Student(Human):
 
 	def __init__(self, gender, age, first_name, last_name, record_book):
+		super().__init__(gender, age, first_name, last_name)
 		self.gender = gender
 		self.age = age
 		self.first_name = first_name
@@ -39,13 +25,12 @@ class Student(Human):
 
 
 class Group:
+
 	def __init__(self, number):
 		self.number = number
 		self.group = set()
 
 	def add_student(self, student):
-		if len(self.group) >= 4:
-			raise MyCustomError("More than 4")
 		self.group.add(student)
 
 	def delete_student(self, last_name):
@@ -61,10 +46,10 @@ class Group:
 			return None
 
 	def __str__(self):
-		all_students = set()
-		for self.student in self.group:
-			all_students.add(self.student)
-		return f'{self.student}\n'
+		all_students = ""
+		for student in self.group:
+			all_students += f"{str(student)}\n"
+		return all_students
 
 
 st1 = Student('Male', 30, 'Steve', 'Jobs', 'AN142')
